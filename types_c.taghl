@@ -1,0 +1,5 @@
+syn keyword CTagsMember cfoffBits ciYPelsPerMeter rgbRed ciWidth ciCompress ciClrImportant cfType ciXPelsPerMeter rgbReserved cfReserved ciClrUsed ciBitCount ciPlanes rgbBlue ciHeight ciSizeImage cfSize ciSize rgbGreen
+syn keyword CTagsGlobalVariable tty fbp rgbquad InfoHead xres bits_per_pixel FileHead tty_mode_was yres
+syn keyword CTagsFunction main set_tty_text chartolong set_tty_graphics show_bmp
+syn keyword CTagsType BITMAPFILEHEADER BITMAPINFOHEADER RGBQUAD
+

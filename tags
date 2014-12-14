@@ -1,0 +1,65 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BITMAPFILEHEADER	main.c	/^} BITMAPFILEHEADER;       \/* 文件头结构 *\/$/;"	t	typeref:struct:__anon1	file:
+BITMAPINFOHEADER	main.c	/^} BITMAPINFOHEADER;       \/* 位图信息头结构 *\/$/;"	t	typeref:struct:__anon2	file:
+FileHead	main.c	/^BITMAPFILEHEADER FileHead;$/;"	v
+InfoHead	main.c	/^BITMAPINFOHEADER InfoHead;$/;"	v
+RGBQUAD	main.c	/^} RGBQUAD;$/;"	t	typeref:struct:__anon3	file:
+__anon1::cfReserved	main.c	/^    char cfReserved[4];     \/* 保留, 必须为 0 *\/$/;"	m	struct:__anon1	file:	access:public
+__anon1::cfSize	main.c	/^    char cfSize[4];         \/* 文件的大小(字节) *\/$/;"	m	struct:__anon1	file:	access:public
+__anon1::cfType	main.c	/^    char cfType[2];         \/* 文件类型, 必须为 "BM" (0x4D42) *\/$/;"	m	struct:__anon1	file:	access:public
+__anon1::cfoffBits	main.c	/^    char cfoffBits[4];      \/* 位图阵列相对于文件头的偏移量(字节) *\/$/;"	m	struct:__anon1	file:	access:public
+__anon2::ciBitCount	main.c	/^    char ciBitCount[2];     \/* 每个像素的位数, 1,4,8或24 *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciClrImportant	main.c	/^    char ciClrImportant[4]; \/* 重要颜色索引的个数 *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciClrUsed	main.c	/^    char ciClrUsed[4];      \/* 位图实际使用的颜色表的颜色数 *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciCompress	main.c	/^    char ciCompress[4];     \/* 位图阵列的压缩方法,0=不压缩 *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciHeight	main.c	/^    char ciHeight[4];       \/* 位图高度(像素) *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciPlanes	main.c	/^    char ciPlanes[2];       \/* 目标设备的位平面数, 必须置为1 *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciSize	main.c	/^    char ciSize[4];         \/* size of BITMAPINFOHEADER *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciSizeImage	main.c	/^    char ciSizeImage[4];    \/* 图像大小(字节) *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciWidth	main.c	/^    char ciWidth[4];        \/* 位图宽度(像素) *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciXPelsPerMeter	main.c	/^    char ciXPelsPerMeter[4];\/* 目标设备水平每米像素个数 *\/$/;"	m	struct:__anon2	file:	access:public
+__anon2::ciYPelsPerMeter	main.c	/^    char ciYPelsPerMeter[4];\/* 目标设备垂直每米像素个数 *\/$/;"	m	struct:__anon2	file:	access:public
+__anon3::rgbBlue	main.c	/^    char rgbBlue;$/;"	m	struct:__anon3	file:	access:public
+__anon3::rgbGreen	main.c	/^    char rgbGreen;$/;"	m	struct:__anon3	file:	access:public
+__anon3::rgbRed	main.c	/^    char rgbRed;$/;"	m	struct:__anon3	file:	access:public
+__anon3::rgbReserved	main.c	/^    char rgbReserved;$/;"	m	struct:__anon3	file:	access:public
+bits_per_pixel	main.c	/^int bits_per_pixel = 0;$/;"	v
+cfReserved	main.c	/^    char cfReserved[4];     \/* 保留, 必须为 0 *\/$/;"	m	struct:__anon1	file:	access:public
+cfSize	main.c	/^    char cfSize[4];         \/* 文件的大小(字节) *\/$/;"	m	struct:__anon1	file:	access:public
+cfType	main.c	/^    char cfType[2];         \/* 文件类型, 必须为 "BM" (0x4D42) *\/$/;"	m	struct:__anon1	file:	access:public
+cfoffBits	main.c	/^    char cfoffBits[4];      \/* 位图阵列相对于文件头的偏移量(字节) *\/$/;"	m	struct:__anon1	file:	access:public
+chartolong	main.c	/^long chartolong( char * string, int length )$/;"	f	signature:( char * string, int length )
+chartolong	main.c	/^long chartolong( char * string, int length );$/;"	p	file:	signature:( char * string, int length )
+ciBitCount	main.c	/^    char ciBitCount[2];     \/* 每个像素的位数, 1,4,8或24 *\/$/;"	m	struct:__anon2	file:	access:public
+ciClrImportant	main.c	/^    char ciClrImportant[4]; \/* 重要颜色索引的个数 *\/$/;"	m	struct:__anon2	file:	access:public
+ciClrUsed	main.c	/^    char ciClrUsed[4];      \/* 位图实际使用的颜色表的颜色数 *\/$/;"	m	struct:__anon2	file:	access:public
+ciCompress	main.c	/^    char ciCompress[4];     \/* 位图阵列的压缩方法,0=不压缩 *\/$/;"	m	struct:__anon2	file:	access:public
+ciHeight	main.c	/^    char ciHeight[4];       \/* 位图高度(像素) *\/$/;"	m	struct:__anon2	file:	access:public
+ciPlanes	main.c	/^    char ciPlanes[2];       \/* 目标设备的位平面数, 必须置为1 *\/$/;"	m	struct:__anon2	file:	access:public
+ciSize	main.c	/^    char ciSize[4];         \/* size of BITMAPINFOHEADER *\/$/;"	m	struct:__anon2	file:	access:public
+ciSizeImage	main.c	/^    char ciSizeImage[4];    \/* 图像大小(字节) *\/$/;"	m	struct:__anon2	file:	access:public
+ciWidth	main.c	/^    char ciWidth[4];        \/* 位图宽度(像素) *\/$/;"	m	struct:__anon2	file:	access:public
+ciXPelsPerMeter	main.c	/^    char ciXPelsPerMeter[4];\/* 目标设备水平每米像素个数 *\/$/;"	m	struct:__anon2	file:	access:public
+ciYPelsPerMeter	main.c	/^    char ciYPelsPerMeter[4];\/* 目标设备垂直每米像素个数 *\/$/;"	m	struct:__anon2	file:	access:public
+fbp	main.c	/^char *fbp = 0;$/;"	v
+main	main.c	/^int main( int argc, char *argv[] )$/;"	f	signature:( int argc, char *argv[] )
+rgbBlue	main.c	/^    char rgbBlue;$/;"	m	struct:__anon3	file:	access:public
+rgbGreen	main.c	/^    char rgbGreen;$/;"	m	struct:__anon3	file:	access:public
+rgbRed	main.c	/^    char rgbRed;$/;"	m	struct:__anon3	file:	access:public
+rgbReserved	main.c	/^    char rgbReserved;$/;"	m	struct:__anon3	file:	access:public
+rgbquad	main.c	/^RGBQUAD rgbquad;$/;"	v
+set_tty_graphics	main.c	/^int set_tty_graphics( void )$/;"	f	signature:( void )
+set_tty_graphics	main.c	/^int set_tty_graphics( void );$/;"	p	file:	signature:( void )
+set_tty_text	main.c	/^int set_tty_text( void )$/;"	f	signature:( void )
+set_tty_text	main.c	/^int set_tty_text( void );$/;"	p	file:	signature:( void )
+show_bmp	main.c	/^int  show_bmp  ( char *bmpfile );$/;"	p	file:	signature:( char *bmpfile )
+show_bmp	main.c	/^int show_bmp( char *bmpfile )$/;"	f	signature:( char *bmpfile )
+tty	main.c	/^int tty;$/;"	v
+tty_mode_was	main.c	/^int tty_mode_was;$/;"	v
+xres	main.c	/^int xres = 0;$/;"	v
+yres	main.c	/^int yres = 0;$/;"	v

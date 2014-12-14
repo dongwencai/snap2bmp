@@ -1,0 +1,48 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BITMAPFILEHEADER	mkbmp.c	/^} BITMAPFILEHEADER; $/;"	t	typeref:struct:tagBITMAPFILEHEADER	file:
+BITMAPINFOHEADER	mkbmp.c	/^} BITMAPINFOHEADER;$/;"	t	typeref:struct:tagBITMAPINFOHEADER	file:
+bfOffBits	mkbmp.c	/^    int32_t bfOffBits; $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+bfReserved1	mkbmp.c	/^    uint16_t bfReserved1; $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+bfReserved2	mkbmp.c	/^    uint16_t bfReserved2; $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+bfSize	mkbmp.c	/^    int32_t bfSize; $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+bfType	mkbmp.c	/^    uint16_t bfType;    $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+biBitCount	mkbmp.c	/^    int16_t biBitCount; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biClrImportant	mkbmp.c	/^    int32_t biClrImportant; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biClrUsed	mkbmp.c	/^    int32_t biClrUsed; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biCompression	mkbmp.c	/^    int32_t biCompression; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biHeight	mkbmp.c	/^    int32_t biHeight; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biPlanes	mkbmp.c	/^    int16_t biPlanes; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biSize	mkbmp.c	/^    int32_t biSize; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biSizeImage	mkbmp.c	/^    int32_t biSizeImage; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biWidth	mkbmp.c	/^    int32_t biWidth; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biXPelsPerMeter	mkbmp.c	/^    int32_t biXPelsPerMeter; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+biYPelsPerMeter	mkbmp.c	/^    int32_t biYPelsPerMeter; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+bpp	mkbmp.c	/^static char o,i,bpp,xres,yres;$/;"	v	file:
+i	mkbmp.c	/^static char o,i,bpp,xres,yres;$/;"	v	file:
+main	mkbmp.c	/^int main(int argc,char *argv[])$/;"	f	signature:(int argc,char *argv[])
+o	mkbmp.c	/^static char o,i,bpp,xres,yres;$/;"	v	file:
+tagBITMAPFILEHEADER	mkbmp.c	/^typedef struct tagBITMAPFILEHEADER $/;"	s	file:
+tagBITMAPFILEHEADER::bfOffBits	mkbmp.c	/^    int32_t bfOffBits; $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+tagBITMAPFILEHEADER::bfReserved1	mkbmp.c	/^    uint16_t bfReserved1; $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+tagBITMAPFILEHEADER::bfReserved2	mkbmp.c	/^    uint16_t bfReserved2; $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+tagBITMAPFILEHEADER::bfSize	mkbmp.c	/^    int32_t bfSize; $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+tagBITMAPFILEHEADER::bfType	mkbmp.c	/^    uint16_t bfType;    $/;"	m	struct:tagBITMAPFILEHEADER	file:	access:public
+tagBITMAPINFOHEADER	mkbmp.c	/^typedef struct tagBITMAPINFOHEADER $/;"	s	file:
+tagBITMAPINFOHEADER::biBitCount	mkbmp.c	/^    int16_t biBitCount; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biClrImportant	mkbmp.c	/^    int32_t biClrImportant; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biClrUsed	mkbmp.c	/^    int32_t biClrUsed; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biCompression	mkbmp.c	/^    int32_t biCompression; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biHeight	mkbmp.c	/^    int32_t biHeight; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biPlanes	mkbmp.c	/^    int16_t biPlanes; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biSize	mkbmp.c	/^    int32_t biSize; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biSizeImage	mkbmp.c	/^    int32_t biSizeImage; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biWidth	mkbmp.c	/^    int32_t biWidth; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biXPelsPerMeter	mkbmp.c	/^    int32_t biXPelsPerMeter; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+tagBITMAPINFOHEADER::biYPelsPerMeter	mkbmp.c	/^    int32_t biYPelsPerMeter; $/;"	m	struct:tagBITMAPINFOHEADER	file:	access:public
+xres	mkbmp.c	/^static char o,i,bpp,xres,yres;$/;"	v	file:
+yres	mkbmp.c	/^static char o,i,bpp,xres,yres;$/;"	v	file:
