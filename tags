@@ -3,55 +3,81 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-BITMAPFILEHEADER	main.c	/^} BITMAPFILEHEADER;       \/* 文件头结构 *\/$/;"	t	typeref:struct:__anon1	file:
-BITMAPINFOHEADER	main.c	/^} BITMAPINFOHEADER;       \/* 位图信息头结构 *\/$/;"	t	typeref:struct:__anon2	file:
+!_TAG_PROGRAM_VERSION	5.8	//
+BITMAPFILEHEADER	bmp.h	/^}__attribute__((packed)) BITMAPFILEHEADER; $/;"	t	typeref:struct:__anon2
+BITMAPINFOHEADER	bmp.h	/^}__attribute__((packed)) BITMAPINFOHEADER;$/;"	t	typeref:struct:__anon3
+FILE_BROKEN	bmp.h	/^    FILE_BROKEN,$/;"	e	enum:__anon5
+FILE_NOT_EXIST	bmp.h	/^    FILE_NOT_EXIST,$/;"	e	enum:__anon5
+FORMAL_NOT_SUPPORT	bmp.h	/^    FORMAL_NOT_SUPPORT;$/;"	e	enum:__anon5
 FileHead	main.c	/^BITMAPFILEHEADER FileHead;$/;"	v
 InfoHead	main.c	/^BITMAPINFOHEADER InfoHead;$/;"	v
-RGBQUAD	main.c	/^} RGBQUAD;$/;"	t	typeref:struct:__anon3	file:
-__anon1::cfReserved	main.c	/^    char cfReserved[4];     \/* 保留, 必须为 0 *\/$/;"	m	struct:__anon1	file:	access:public
-__anon1::cfSize	main.c	/^    char cfSize[4];         \/* 文件的大小(字节) *\/$/;"	m	struct:__anon1	file:	access:public
-__anon1::cfType	main.c	/^    char cfType[2];         \/* 文件类型, 必须为 "BM" (0x4D42) *\/$/;"	m	struct:__anon1	file:	access:public
-__anon1::cfoffBits	main.c	/^    char cfoffBits[4];      \/* 位图阵列相对于文件头的偏移量(字节) *\/$/;"	m	struct:__anon1	file:	access:public
-__anon2::ciBitCount	main.c	/^    char ciBitCount[2];     \/* 每个像素的位数, 1,4,8或24 *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciClrImportant	main.c	/^    char ciClrImportant[4]; \/* 重要颜色索引的个数 *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciClrUsed	main.c	/^    char ciClrUsed[4];      \/* 位图实际使用的颜色表的颜色数 *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciCompress	main.c	/^    char ciCompress[4];     \/* 位图阵列的压缩方法,0=不压缩 *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciHeight	main.c	/^    char ciHeight[4];       \/* 位图高度(像素) *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciPlanes	main.c	/^    char ciPlanes[2];       \/* 目标设备的位平面数, 必须置为1 *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciSize	main.c	/^    char ciSize[4];         \/* size of BITMAPINFOHEADER *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciSizeImage	main.c	/^    char ciSizeImage[4];    \/* 图像大小(字节) *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciWidth	main.c	/^    char ciWidth[4];        \/* 位图宽度(像素) *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciXPelsPerMeter	main.c	/^    char ciXPelsPerMeter[4];\/* 目标设备水平每米像素个数 *\/$/;"	m	struct:__anon2	file:	access:public
-__anon2::ciYPelsPerMeter	main.c	/^    char ciYPelsPerMeter[4];\/* 目标设备垂直每米像素个数 *\/$/;"	m	struct:__anon2	file:	access:public
-__anon3::rgbBlue	main.c	/^    char rgbBlue;$/;"	m	struct:__anon3	file:	access:public
-__anon3::rgbGreen	main.c	/^    char rgbGreen;$/;"	m	struct:__anon3	file:	access:public
-__anon3::rgbRed	main.c	/^    char rgbRed;$/;"	m	struct:__anon3	file:	access:public
-__anon3::rgbReserved	main.c	/^    char rgbReserved;$/;"	m	struct:__anon3	file:	access:public
+MALLOC_FAIL	bmp.h	/^   MALLOC_FAIL, $/;"	e	enum:__anon6
+RGBA888TORGBA656	main.c	14;"	d	file:
+RGBQUAD	main.c	/^} RGBQUAD;$/;"	t	typeref:struct:__anon1	file:
+__BMP_H__	bmp.h	2;"	d
+__anon1::rgbBlue	main.c	/^    char rgbBlue;$/;"	m	struct:__anon1	file:	access:public
+__anon1::rgbGreen	main.c	/^    char rgbGreen;$/;"	m	struct:__anon1	file:	access:public
+__anon1::rgbRed	main.c	/^    char rgbRed;$/;"	m	struct:__anon1	file:	access:public
+__anon1::rgbReserved	main.c	/^    char rgbReserved;$/;"	m	struct:__anon1	file:	access:public
+__anon2::bfOffBits	bmp.h	/^    int32_t bfOffBits; $/;"	m	struct:__anon2	access:public
+__anon2::bfReserved1	bmp.h	/^    uint16_t bfReserved1; $/;"	m	struct:__anon2	access:public
+__anon2::bfReserved2	bmp.h	/^    uint16_t bfReserved2; $/;"	m	struct:__anon2	access:public
+__anon2::bfSize	bmp.h	/^    int32_t bfSize; $/;"	m	struct:__anon2	access:public
+__anon2::bfType	bmp.h	/^    uint16_t bfType;    $/;"	m	struct:__anon2	access:public
+__anon3::biBitCount	bmp.h	/^    int16_t biBitCount; $/;"	m	struct:__anon3	access:public
+__anon3::biClrImportant	bmp.h	/^    int32_t biClrImportant; $/;"	m	struct:__anon3	access:public
+__anon3::biClrUsed	bmp.h	/^    int32_t biClrUsed; $/;"	m	struct:__anon3	access:public
+__anon3::biCompression	bmp.h	/^    int32_t biCompression; $/;"	m	struct:__anon3	access:public
+__anon3::biHeight	bmp.h	/^    int32_t biHeight; $/;"	m	struct:__anon3	access:public
+__anon3::biPlanes	bmp.h	/^    int16_t biPlanes; $/;"	m	struct:__anon3	access:public
+__anon3::biSize	bmp.h	/^    int32_t biSize; $/;"	m	struct:__anon3	access:public
+__anon3::biSizeImage	bmp.h	/^    int32_t biSizeImage; $/;"	m	struct:__anon3	access:public
+__anon3::biWidth	bmp.h	/^    int32_t biWidth; $/;"	m	struct:__anon3	access:public
+__anon3::biXPelsPerMeter	bmp.h	/^    int32_t biXPelsPerMeter; $/;"	m	struct:__anon3	access:public
+__anon3::biYPelsPerMeter	bmp.h	/^    int32_t biYPelsPerMeter; $/;"	m	struct:__anon3	access:public
+__anon4::bpp	bmp.h	/^    short bpp;$/;"	m	struct:__anon4	access:public
+__anon4::buf	bmp.h	/^    uint32_t buf[0];$/;"	m	struct:__anon4	access:public
+__anon4::height	bmp.h	/^    int height;$/;"	m	struct:__anon4	access:public
+__anon4::stride	bmp.h	/^    uint16_t stride;$/;"	m	struct:__anon4	access:public
+__anon4::width	bmp.h	/^    int width;$/;"	m	struct:__anon4	access:public
+bfOffBits	bmp.h	/^    int32_t bfOffBits; $/;"	m	struct:__anon2	access:public
+bfReserved1	bmp.h	/^    uint16_t bfReserved1; $/;"	m	struct:__anon2	access:public
+bfReserved2	bmp.h	/^    uint16_t bfReserved2; $/;"	m	struct:__anon2	access:public
+bfSize	bmp.h	/^    int32_t bfSize; $/;"	m	struct:__anon2	access:public
+bfType	bmp.h	/^    uint16_t bfType;    $/;"	m	struct:__anon2	access:public
+biBitCount	bmp.h	/^    int16_t biBitCount; $/;"	m	struct:__anon3	access:public
+biClrImportant	bmp.h	/^    int32_t biClrImportant; $/;"	m	struct:__anon3	access:public
+biClrUsed	bmp.h	/^    int32_t biClrUsed; $/;"	m	struct:__anon3	access:public
+biCompression	bmp.h	/^    int32_t biCompression; $/;"	m	struct:__anon3	access:public
+biHeight	bmp.h	/^    int32_t biHeight; $/;"	m	struct:__anon3	access:public
+biPlanes	bmp.h	/^    int16_t biPlanes; $/;"	m	struct:__anon3	access:public
+biSize	bmp.h	/^    int32_t biSize; $/;"	m	struct:__anon3	access:public
+biSizeImage	bmp.h	/^    int32_t biSizeImage; $/;"	m	struct:__anon3	access:public
+biWidth	bmp.h	/^    int32_t biWidth; $/;"	m	struct:__anon3	access:public
+biXPelsPerMeter	bmp.h	/^    int32_t biXPelsPerMeter; $/;"	m	struct:__anon3	access:public
+biYPelsPerMeter	bmp.h	/^    int32_t biYPelsPerMeter; $/;"	m	struct:__anon3	access:public
 bits_per_pixel	main.c	/^int bits_per_pixel = 0;$/;"	v
-cfReserved	main.c	/^    char cfReserved[4];     \/* 保留, 必须为 0 *\/$/;"	m	struct:__anon1	file:	access:public
-cfSize	main.c	/^    char cfSize[4];         \/* 文件的大小(字节) *\/$/;"	m	struct:__anon1	file:	access:public
-cfType	main.c	/^    char cfType[2];         \/* 文件类型, 必须为 "BM" (0x4D42) *\/$/;"	m	struct:__anon1	file:	access:public
-cfoffBits	main.c	/^    char cfoffBits[4];      \/* 位图阵列相对于文件头的偏移量(字节) *\/$/;"	m	struct:__anon1	file:	access:public
+bmp_err_e	bmp.h	/^}bmp_err_e;$/;"	t	typeref:enum:__anon5
+bmp_info_t	bmp.h	/^}bmp_info_t;$/;"	t	typeref:struct:__anon4
+bpp	bmp.h	/^    short bpp;$/;"	m	struct:__anon4	access:public
+bpp	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	file:
+buf	bmp.h	/^    uint32_t buf[0];$/;"	m	struct:__anon4	access:public
 chartolong	main.c	/^long chartolong( char * string, int length )$/;"	f	signature:( char * string, int length )
 chartolong	main.c	/^long chartolong( char * string, int length );$/;"	p	file:	signature:( char * string, int length )
-ciBitCount	main.c	/^    char ciBitCount[2];     \/* 每个像素的位数, 1,4,8或24 *\/$/;"	m	struct:__anon2	file:	access:public
-ciClrImportant	main.c	/^    char ciClrImportant[4]; \/* 重要颜色索引的个数 *\/$/;"	m	struct:__anon2	file:	access:public
-ciClrUsed	main.c	/^    char ciClrUsed[4];      \/* 位图实际使用的颜色表的颜色数 *\/$/;"	m	struct:__anon2	file:	access:public
-ciCompress	main.c	/^    char ciCompress[4];     \/* 位图阵列的压缩方法,0=不压缩 *\/$/;"	m	struct:__anon2	file:	access:public
-ciHeight	main.c	/^    char ciHeight[4];       \/* 位图高度(像素) *\/$/;"	m	struct:__anon2	file:	access:public
-ciPlanes	main.c	/^    char ciPlanes[2];       \/* 目标设备的位平面数, 必须置为1 *\/$/;"	m	struct:__anon2	file:	access:public
-ciSize	main.c	/^    char ciSize[4];         \/* size of BITMAPINFOHEADER *\/$/;"	m	struct:__anon2	file:	access:public
-ciSizeImage	main.c	/^    char ciSizeImage[4];    \/* 图像大小(字节) *\/$/;"	m	struct:__anon2	file:	access:public
-ciWidth	main.c	/^    char ciWidth[4];        \/* 位图宽度(像素) *\/$/;"	m	struct:__anon2	file:	access:public
-ciXPelsPerMeter	main.c	/^    char ciXPelsPerMeter[4];\/* 目标设备水平每米像素个数 *\/$/;"	m	struct:__anon2	file:	access:public
-ciYPelsPerMeter	main.c	/^    char ciYPelsPerMeter[4];\/* 目标设备垂直每米像素个数 *\/$/;"	m	struct:__anon2	file:	access:public
+common_err_e	bmp.h	/^}common_err_e;$/;"	t	typeref:enum:__anon6
 fbp	main.c	/^char *fbp = 0;$/;"	v
+flag_i	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
+flag_o	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
+height	bmp.h	/^    int height;$/;"	m	struct:__anon4	access:public
+height	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	file:
+load_bmp	main.c	/^bmp_info_t *load_bmp(char *file,int *ret_status)$/;"	f	signature:(char *file,int *ret_status)
 main	main.c	/^int main( int argc, char *argv[] )$/;"	f	signature:( int argc, char *argv[] )
-rgbBlue	main.c	/^    char rgbBlue;$/;"	m	struct:__anon3	file:	access:public
-rgbGreen	main.c	/^    char rgbGreen;$/;"	m	struct:__anon3	file:	access:public
-rgbRed	main.c	/^    char rgbRed;$/;"	m	struct:__anon3	file:	access:public
-rgbReserved	main.c	/^    char rgbReserved;$/;"	m	struct:__anon3	file:	access:public
+main	mkbmp/mkbmp.c	/^int main(int argc,char *argv[])$/;"	f	signature:(int argc,char *argv[])
+option_bpp	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
+rgbBlue	main.c	/^    char rgbBlue;$/;"	m	struct:__anon1	file:	access:public
+rgbGreen	main.c	/^    char rgbGreen;$/;"	m	struct:__anon1	file:	access:public
+rgbRed	main.c	/^    char rgbRed;$/;"	m	struct:__anon1	file:	access:public
+rgbReserved	main.c	/^    char rgbReserved;$/;"	m	struct:__anon1	file:	access:public
 rgbquad	main.c	/^RGBQUAD rgbquad;$/;"	v
 set_tty_graphics	main.c	/^int set_tty_graphics( void )$/;"	f	signature:( void )
 set_tty_graphics	main.c	/^int set_tty_graphics( void );$/;"	p	file:	signature:( void )
@@ -59,7 +85,13 @@ set_tty_text	main.c	/^int set_tty_text( void )$/;"	f	signature:( void )
 set_tty_text	main.c	/^int set_tty_text( void );$/;"	p	file:	signature:( void )
 show_bmp	main.c	/^int  show_bmp  ( char *bmpfile );$/;"	p	file:	signature:( char *bmpfile )
 show_bmp	main.c	/^int show_bmp( char *bmpfile )$/;"	f	signature:( char *bmpfile )
+stride	bmp.h	/^    uint16_t stride;$/;"	m	struct:__anon4	access:public
+tmp	main.c	/^unsigned char *tmp;$/;"	v
 tty	main.c	/^int tty;$/;"	v
 tty_mode_was	main.c	/^int tty_mode_was;$/;"	v
+width	bmp.h	/^    int width;$/;"	m	struct:__anon4	access:public
+width	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	file:
 xres	main.c	/^int xres = 0;$/;"	v
+xres	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
 yres	main.c	/^int yres = 0;$/;"	v
+yres	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:

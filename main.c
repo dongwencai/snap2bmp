@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -8,30 +9,11 @@
 #include <sys/mman.h>
 #include <sys/ioctl.h>
 #include <arpa/inet.h>
+#include "bmp.h"
 
-typedef struct
-{
-    char cfType[2];         /* 文件类型, 必须为 "BM" (0x4D42) */
-    char cfSize[4];         /* 文件的大小(字节) */
-    char cfReserved[4];     /* 保留, 必须为 0 */
-    char cfoffBits[4];      /* 位图阵列相对于文件头的偏移量(字节) */
-} BITMAPFILEHEADER;       /* 文件头结构 */
-
-typedef struct
-{
-    char ciSize[4];         /* size of BITMAPINFOHEADER */
-    char ciWidth[4];        /* 位图宽度(像素) */
-    char ciHeight[4];       /* 位图高度(像素) */
-    char ciPlanes[2];       /* 目标设备的位平面数, 必须置为1 */
-    char ciBitCount[2];     /* 每个像素的位数, 1,4,8或24 */
-    char ciCompress[4];     /* 位图阵列的压缩方法,0=不压缩 */
-    char ciSizeImage[4];    /* 图像大小(字节) */
-    char ciXPelsPerMeter[4];/* 目标设备水平每米像素个数 */
-    char ciYPelsPerMeter[4];/* 目标设备垂直每米像素个数 */
-    char ciClrUsed[4];      /* 位图实际使用的颜色表的颜色数 */
-    char ciClrImportant[4]; /* 重要颜色索引的个数 */
-} BITMAPINFOHEADER;       /* 位图信息头结构 */
-
+#define RGBA888TORGBA656(color) ((((color) >> 19) & 0x1f) << 11) \
+                                                |((((color) >> 10) & 0x3f) << 5) \
+                                            |(((color) >> 3) & 0x1f) 
 typedef struct
 {
     char rgbBlue;
@@ -51,6 +33,7 @@ int bits_per_pixel = 0;
 int tty;
 int tty_mode_was;
 unsigned char *tmp;
+
 
 int set_tty_graphics( void );
 int set_tty_text( void );
@@ -95,7 +78,7 @@ int main( int argc, char *argv[] )
     bits_per_pixel = vinfo.bits_per_pixel;
 
     tmp = (unsigned char *) malloc(xres * yres * bits_per_pixel);
-    xres += 10;
+    //xres += 10;
     printf("xres:%d\n",xres);
     // Figure out the size of the screen in bytes
     screensize = vinfo.xres * vinfo.yres * vinfo.bits_per_pixel / 8;
@@ -120,10 +103,50 @@ int main( int argc, char *argv[] )
     close(fbfd);
     return 0;
 }
-
 /******************************************************************************
  *
  ******************************************************************************/
+bmp_info_t *load_bmp(char *file,int *ret_status)
+{
+   FILE *fp = NULL;
+   char *tmp = NULL;
+   bmp_info_t *pbi = NULL;
+   int status = FILE_NOT_EXIST,len = 0,context_len;
+   BITMAPINFOHEADER bmpinfo;
+   BITMAPFILEHEADER bmpfile;
+   fp = fopen(file,"rb");
+   if(!fp)
+   {
+        *ret_status = FILE_NOT_EXIST;
+        return NULL;
+   }
+   len = fread(&bmpfile,sizeof(BITMAPFILEHEADER),1,fp); 
+   len += fread(&bmpinfo,sizeof(BITMAPINFOHEADER),1,fp); 
+   if(len < 54)
+   {
+       *ret_status = FILE_BROKEN;
+       return NULL;
+   }
+   context_len = bmpinfo.biBitCount * bmpinfo.biWidth * bmpinfo.biHeight / 8;
+   pbi = malloc(context_len);
+   tmp = malloc(context_len);
+   if(!pbi || !tmp)
+   {
+       *ret_status = MALLOC_FAIL;
+       return NULL;
+   }
+   pbi->bpp = bmpinfo.biBitCount;
+   pbi->height = bmpinfo.biHeight;
+   pbi->width = bmpinfo.biWidth;
+   pbi->stride = bmpinfo.biWidth * bmpinfo.biBitCount / 8;
+   len += fread(tmp,pbi->stride,1,fp);
+   if(len < context_len + 54)
+   {
+       *ret_status = FILE_BROKEN;
+       return NULL;
+   }
+   return pbi;
+}
 int show_bmp( char *bmpfile )
 {
     FILE *fp;
@@ -168,29 +191,6 @@ int show_bmp( char *bmpfile )
 
     printf("bmp width:%d\theight:%d\tbitcount:%d\n",ciWidth,ciHeight,ciBitCount);
     line_x = line_y = 0;
-    /*
-    while( !feof( fp ) )
-    {
-        rc = fread( (char *)&rgbquad, 1, sizeof(rgbquad), fp );
-        if ( rc != sizeof(RGBQUAD) )
-        {
-            break;
-        }
-
-        location = line_x * bits_per_pixel / 8 + (ciHeight - line_y - 1) * xres * bits_per_pixel / 8;
-
-        *(fbp + location) = rgbquad.rgbBlue;
-        *(fbp + location + 1) = rgbquad.rgbGreen;
-        *(fbp + location + 2) = rgbquad.rgbRed;
-        *(fbp + location + 3) = rgbquad.rgbReserved;
-
-        line_x++;
-        if ( line_x == ( ciWidth - 1 ) )
-        {
-            line_x = 0;
-            line_y++;
-        }
-    }*/
     BytesPerLine = (ciWidth * ciBitCount + 31) / 32 * 4;
     printf("BytePerLine is %d\n",BytesPerLine);
     int x0=50,y0;
@@ -198,9 +198,14 @@ int show_bmp( char *bmpfile )
     //printf("tmp[]:%d\t%d\t%d\t%d\n",tmp[0],tmp[1],tmp[2],tmp[3]);
     while( !feof( fp ) )
     {
+        int i,j;
         rc = fread( tmp, 1, BytesPerLine, fp );
+        for(i = 0,j = 0;i < BytesPerLine ; i += 4,j += 2)
+        {
+             *(short *)&tmp[j] = (short)RGBA888TORGBA656(*(unsigned int *)&tmp[i]);
+        }
         location = (ciHeight - line_y - 1) * xres * bits_per_pixel / 8;
-        memcpy( (fbp + location) , tmp, BytesPerLine );
+        memcpy( (fbp + location) , tmp, BytesPerLine / 2);
         line_y++;
     }
     fclose( fp );

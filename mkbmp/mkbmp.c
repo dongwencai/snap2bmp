@@ -5,28 +5,6 @@ static char flag_o,flag_i,option_bpp,xres,yres;
 static int32_t width = 1376,height = 768,bpp = 32;
 //static int32_t width = 100,height = 100,bpp = 32;
 
-typedef struct tagBITMAPFILEHEADER 
-{  
-    uint16_t bfType;    
-    int32_t bfSize; 
-    uint16_t bfReserved1; 
-    uint16_t bfReserved2; 
-    int32_t bfOffBits; 
-}__attribute__((packed)) BITMAPFILEHEADER; 
-typedef struct tagBITMAPINFOHEADER 
-{ 
-    int32_t biSize; 
-    int32_t biWidth; 
-    int32_t biHeight; 
-    int16_t biPlanes; 
-    int16_t biBitCount; 
-    int32_t biCompression; 
-    int32_t biSizeImage; 
-    int32_t biXPelsPerMeter; 
-    int32_t biYPelsPerMeter; 
-    int32_t biClrUsed; 
-    int32_t biClrImportant; 
-}__attribute__((packed)) BITMAPINFOHEADER;
 int main(int argc,char *argv[])
 {
     BITMAPFILEHEADER bmpfileheader = {0};
