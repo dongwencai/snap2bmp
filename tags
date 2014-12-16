@@ -8,13 +8,19 @@ BITMAPFILEHEADER	bmp.h	/^}__attribute__((packed)) BITMAPFILEHEADER; $/;"	t	typer
 BITMAPINFOHEADER	bmp.h	/^}__attribute__((packed)) BITMAPINFOHEADER;$/;"	t	typeref:struct:__anon3
 FILE_BROKEN	bmp.h	/^    FILE_BROKEN,$/;"	e	enum:__anon5
 FILE_NOT_EXIST	bmp.h	/^    FILE_NOT_EXIST,$/;"	e	enum:__anon5
-FORMAL_NOT_SUPPORT	bmp.h	/^    FORMAL_NOT_SUPPORT;$/;"	e	enum:__anon5
+FORMAL_NOT_SUPPORT	bmp.h	/^    FORMAL_NOT_SUPPORT,$/;"	e	enum:__anon5
 FileHead	main.c	/^BITMAPFILEHEADER FileHead;$/;"	v
 InfoHead	main.c	/^BITMAPINFOHEADER InfoHead;$/;"	v
-MALLOC_FAIL	bmp.h	/^   MALLOC_FAIL, $/;"	e	enum:__anon6
+LEFT_ROTATE	bmp.h	/^    LEFT_ROTATE,$/;"	e	enum:__anon6
+MALLOC_FAIL	bmp.h	/^   MALLOC_FAIL, $/;"	e	enum:__anon7
+MAX	common.h	13;"	d
+MIN	common.h	15;"	d
 RGBA888TORGBA656	main.c	14;"	d	file:
 RGBQUAD	main.c	/^} RGBQUAD;$/;"	t	typeref:struct:__anon1	file:
+RIGHT_ROTATE	bmp.h	/^    RIGHT_ROTATE,$/;"	e	enum:__anon6
+SWAP	common.h	4;"	d
 __BMP_H__	bmp.h	2;"	d
+__COMMON_H__	common.h	2;"	d
 __anon1::rgbBlue	main.c	/^    char rgbBlue;$/;"	m	struct:__anon1	file:	access:public
 __anon1::rgbGreen	main.c	/^    char rgbGreen;$/;"	m	struct:__anon1	file:	access:public
 __anon1::rgbRed	main.c	/^    char rgbRed;$/;"	m	struct:__anon1	file:	access:public
@@ -36,7 +42,7 @@ __anon3::biWidth	bmp.h	/^    int32_t biWidth; $/;"	m	struct:__anon3	access:publi
 __anon3::biXPelsPerMeter	bmp.h	/^    int32_t biXPelsPerMeter; $/;"	m	struct:__anon3	access:public
 __anon3::biYPelsPerMeter	bmp.h	/^    int32_t biYPelsPerMeter; $/;"	m	struct:__anon3	access:public
 __anon4::bpp	bmp.h	/^    short bpp;$/;"	m	struct:__anon4	access:public
-__anon4::buf	bmp.h	/^    uint32_t buf[0];$/;"	m	struct:__anon4	access:public
+__anon4::buf	bmp.h	/^    uint8_t buf[0];$/;"	m	struct:__anon4	access:public
 __anon4::height	bmp.h	/^    int height;$/;"	m	struct:__anon4	access:public
 __anon4::stride	bmp.h	/^    uint16_t stride;$/;"	m	struct:__anon4	access:public
 __anon4::width	bmp.h	/^    int width;$/;"	m	struct:__anon4	access:public
@@ -59,18 +65,24 @@ biYPelsPerMeter	bmp.h	/^    int32_t biYPelsPerMeter; $/;"	m	struct:__anon3	acces
 bits_per_pixel	main.c	/^int bits_per_pixel = 0;$/;"	v
 bmp_err_e	bmp.h	/^}bmp_err_e;$/;"	t	typeref:enum:__anon5
 bmp_info_t	bmp.h	/^}bmp_info_t;$/;"	t	typeref:struct:__anon4
+bmp_left_rotate	bmp.c	/^int bmp_left_rotate(bmp_info_t *pbmpinfo,int direction)$/;"	f	signature:(bmp_info_t *pbmpinfo,int direction)
+bmp_left_rotate	bmp.h	/^int bmp_left_rotate(bmp_info_t *pbmpinfo,int direction);$/;"	p	signature:(bmp_info_t *pbmpinfo,int direction)
+bmp_right_rotate	bmp.c	/^int bmp_right_rotate(bmp_info_t *pbmpinfo)$/;"	f	signature:(bmp_info_t *pbmpinfo)
+bmp_rotate_e	bmp.h	/^}bmp_rotate_e;$/;"	t	typeref:enum:__anon6
+bool	common.h	/^typedef char	bool;$/;"	t
 bpp	bmp.h	/^    short bpp;$/;"	m	struct:__anon4	access:public
 bpp	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	file:
-buf	bmp.h	/^    uint32_t buf[0];$/;"	m	struct:__anon4	access:public
-chartolong	main.c	/^long chartolong( char * string, int length )$/;"	f	signature:( char * string, int length )
+buf	bmp.h	/^    uint8_t buf[0];$/;"	m	struct:__anon4	access:public
 chartolong	main.c	/^long chartolong( char * string, int length );$/;"	p	file:	signature:( char * string, int length )
-common_err_e	bmp.h	/^}common_err_e;$/;"	t	typeref:enum:__anon6
+common_err_e	bmp.h	/^}common_err_e;$/;"	t	typeref:enum:__anon7
 fbp	main.c	/^char *fbp = 0;$/;"	v
 flag_i	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
 flag_o	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
 height	bmp.h	/^    int height;$/;"	m	struct:__anon4	access:public
 height	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	file:
-load_bmp	main.c	/^bmp_info_t *load_bmp(char *file,int *ret_status)$/;"	f	signature:(char *file,int *ret_status)
+i16	common.h	/^typedef short   i16;$/;"	t
+load_bmp	bmp.c	/^bmp_info_t *load_bmp(char *file)$/;"	f	signature:(char *file)
+load_bmp	bmp.h	/^bmp_info_t *load_bmp(char *file);$/;"	p	signature:(char *file)
 main	main.c	/^int main( int argc, char *argv[] )$/;"	f	signature:( int argc, char *argv[] )
 main	mkbmp/mkbmp.c	/^int main(int argc,char *argv[])$/;"	f	signature:(int argc,char *argv[])
 option_bpp	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
@@ -86,7 +98,6 @@ set_tty_text	main.c	/^int set_tty_text( void );$/;"	p	file:	signature:( void )
 show_bmp	main.c	/^int  show_bmp  ( char *bmpfile );$/;"	p	file:	signature:( char *bmpfile )
 show_bmp	main.c	/^int show_bmp( char *bmpfile )$/;"	f	signature:( char *bmpfile )
 stride	bmp.h	/^    uint16_t stride;$/;"	m	struct:__anon4	access:public
-tmp	main.c	/^unsigned char *tmp;$/;"	v
 tty	main.c	/^int tty;$/;"	v
 tty_mode_was	main.c	/^int tty_mode_was;$/;"	v
 width	bmp.h	/^    int width;$/;"	m	struct:__anon4	access:public

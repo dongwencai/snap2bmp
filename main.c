@@ -32,7 +32,6 @@ int yres = 0;
 int bits_per_pixel = 0;
 int tty;
 int tty_mode_was;
-unsigned char *tmp;
 
 
 int set_tty_graphics( void );
@@ -77,7 +76,7 @@ int main( int argc, char *argv[] )
     yres = vinfo.yres;
     bits_per_pixel = vinfo.bits_per_pixel;
 
-    tmp = (unsigned char *) malloc(xres * yres * bits_per_pixel);
+   
     //xres += 10;
     printf("xres:%d\n",xres);
     // Figure out the size of the screen in bytes
@@ -106,130 +105,41 @@ int main( int argc, char *argv[] )
 /******************************************************************************
  *
  ******************************************************************************/
-bmp_info_t *load_bmp(char *file,int *ret_status)
-{
-   FILE *fp = NULL;
-   char *tmp = NULL;
-   bmp_info_t *pbi = NULL;
-   int status = FILE_NOT_EXIST,len = 0,context_len;
-   BITMAPINFOHEADER bmpinfo;
-   BITMAPFILEHEADER bmpfile;
-   fp = fopen(file,"rb");
-   if(!fp)
-   {
-        *ret_status = FILE_NOT_EXIST;
-        return NULL;
-   }
-   len = fread(&bmpfile,sizeof(BITMAPFILEHEADER),1,fp); 
-   len += fread(&bmpinfo,sizeof(BITMAPINFOHEADER),1,fp); 
-   if(len < 54)
-   {
-       *ret_status = FILE_BROKEN;
-       return NULL;
-   }
-   context_len = bmpinfo.biBitCount * bmpinfo.biWidth * bmpinfo.biHeight / 8;
-   pbi = malloc(context_len);
-   tmp = malloc(context_len);
-   if(!pbi || !tmp)
-   {
-       *ret_status = MALLOC_FAIL;
-       return NULL;
-   }
-   pbi->bpp = bmpinfo.biBitCount;
-   pbi->height = bmpinfo.biHeight;
-   pbi->width = bmpinfo.biWidth;
-   pbi->stride = bmpinfo.biWidth * bmpinfo.biBitCount / 8;
-   len += fread(tmp,pbi->stride,1,fp);
-   if(len < context_len + 54)
-   {
-       *ret_status = FILE_BROKEN;
-       return NULL;
-   }
-   return pbi;
-}
 int show_bmp( char *bmpfile )
 {
     FILE *fp;
+    char *tmp = NULL;
     int rc;
+    int color;
     int ciBitCount, ciWidth, ciHeight;
     int line_x, line_y;
-    long int location = 0, BytesPerLine = 0;
-
-    /* 打开位图文件 */
-    fp = fopen( bmpfile, "rb" );
-    if (fp == NULL)
-    {
-        return( -1 );
-    }
-
-    /* 读取位图文件头 */
-    rc = fread( &FileHead, 1, sizeof(BITMAPFILEHEADER), fp );
-    if ( rc != sizeof( BITMAPFILEHEADER ) )
-    {
-        fclose( fp );
-        return( -2 );
-    }
-
-    /* 判断位图的类型 */
-    if (memcmp(FileHead.cfType, "BM", 2) != 0)
-    {
-        fclose( fp );
-        return( -3 );
-    }
-
-    /* 读取位图信息头 */
-    rc = fread((char *)&InfoHead,1,sizeof(BITMAPINFOHEADER),fp);
-    if(rc != sizeof(BITMAPINFOHEADER))
-    {
-        fclose( fp );
-        return( -4 );
-    }
-
-    ciWidth    = (int) chartolong( InfoHead.ciWidth,    4 );
-    ciHeight   = (int) chartolong( InfoHead.ciHeight,   4 );
-    ciBitCount = (int) chartolong( InfoHead.ciBitCount, 4 );
-
-    printf("bmp width:%d\theight:%d\tbitcount:%d\n",ciWidth,ciHeight,ciBitCount);
-    line_x = line_y = 0;
-    BytesPerLine = (ciWidth * ciBitCount + 31) / 32 * 4;
-    printf("BytePerLine is %d\n",BytesPerLine);
-    int x0=50,y0;
-    //fread(tmp,1,4,fp);
-    //printf("tmp[]:%d\t%d\t%d\t%d\n",tmp[0],tmp[1],tmp[2],tmp[3]);
-    while( !feof( fp ) )
+    long int location = 0, BytesPerLine = 0,pos = 0;
+    bmp_info_t *binfo = NULL;
+    binfo = load_bmp(bmpfile);
+    bmp_left_rotate(binfo,LEFT_ROTATE);
+    if(binfo)
     {
         int i,j;
-        rc = fread( tmp, 1, BytesPerLine, fp );
-        for(i = 0,j = 0;i < BytesPerLine ; i += 4,j += 2)
+        tmp = (char *)malloc(binfo->stride / 2 );
+        for(line_y = 0;line_y < binfo->height;line_y ++)
         {
-             *(short *)&tmp[j] = (short)RGBA888TORGBA656(*(unsigned int *)&tmp[i]);
+            for(i = 0,j = 0;i < binfo->stride ; i += 4,j += 2)
+            {
+                /*
+                color = 0;
+                color = (binfo->buf[i] << 16);
+                color |= (binfo->buf[i + 1] << 8);
+                color |= binfo->buf[i + 2];
+                */
+                *(short *)&tmp[j] = (short)RGBA888TORGBA656(*(unsigned int *)&binfo->buf[i]);
+            }
+            pos = line_y * xres * bits_per_pixel / 8; 
+            //memcpy(fbp + pos,tmp,binfo->stride / 2 );
+            memcpy(fbp + pos,&binfo->buf[line_y * binfo->stride],binfo->stride );
         }
-        location = (ciHeight - line_y - 1) * xres * bits_per_pixel / 8;
-        memcpy( (fbp + location) , tmp, BytesPerLine / 2);
-        line_y++;
+        free(tmp);
     }
-    fclose( fp );
-    return( 0 );
 }
-/******************************************************************************
- *
- ******************************************************************************/
-long chartolong( char * string, int length )
-{
-    long number;
-
-    if (length <= 4)
-    {
-        memset( &number, 0x00, sizeof(long) );
-        memcpy( &number, string, length );
-    }
-
-    return( number );
-}
-
-/******************************************************************************
- *
- ******************************************************************************/
 int set_tty_graphics( void )
 {
     int ret = 1;

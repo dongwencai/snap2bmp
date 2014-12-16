@@ -1,7 +1,7 @@
 syn keyword CTagsMember biYPelsPerMeter biClrImportant height rgbRed bfSize rgbBlue biSizeImage stride buf biSize biClrUsed width bfType rgbReserved bfReserved2 bfReserved1 biCompression biXPelsPerMeter biWidth biPlanes biBitCount bfOffBits bpp biHeight rgbGreen
-syn keyword CTagsGlobalVariable tmp InfoHead fbp width option_bpp flag_i rgbquad height bpp tty xres bits_per_pixel FileHead tty_mode_was yres flag_o
-syn keyword CTagsEnumerationValue MALLOC_FAIL FILE_BROKEN FILE_NOT_EXIST FORMAL_NOT_SUPPORT
-syn keyword CTagsFunction chartolong load_bmp set_tty_text main set_tty_graphics show_bmp
-syn keyword CTagsType BITMAPINFOHEADER common_err_e RGBQUAD BITMAPFILEHEADER bmp_err_e bmp_info_t
-syn keyword CTagsDefinedName RGBA888TORGBA656 __BMP_H__
+syn keyword CTagsGlobalVariable InfoHead fbp width option_bpp flag_i rgbquad height bpp tty xres bits_per_pixel FileHead tty_mode_was yres flag_o
+syn keyword CTagsEnumerationValue RIGHT_ROTATE FILE_NOT_EXIST MALLOC_FAIL FILE_BROKEN LEFT_ROTATE FORMAL_NOT_SUPPORT
+syn keyword CTagsFunction bmp_left_rotate bmp_right_rotate main load_bmp set_tty_text chartolong set_tty_graphics show_bmp
+syn keyword CTagsType BITMAPINFOHEADER i16 common_err_e RGBQUAD bmp_rotate_e BITMAPFILEHEADER bool bmp_err_e bmp_info_t
+syn keyword CTagsDefinedName __BMP_H__ MIN MAX RGBA888TORGBA656 SWAP __COMMON_H__
 
