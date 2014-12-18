@@ -44,7 +44,7 @@ err:
        free(pbi);
    return NULL;
 }
-int bmp_left_rotate(bmp_info_t *pbmpinfo,bmp_rotate_e direction)
+int bmp_rotate(bmp_info_t *pbmpinfo,bmp_rotate_e direction)
 {
     bmp_info_t *tmp = NULL;
     int i,j;
@@ -69,7 +69,3 @@ int bmp_left_rotate(bmp_info_t *pbmpinfo,bmp_rotate_e direction)
     free(tmp);
 }
 
-int bmp_right_rotate(bmp_info_t *pbmpinfo)
-{
-
-}

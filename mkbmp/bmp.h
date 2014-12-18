@@ -50,7 +50,7 @@ typedef enum{
 
 bmp_info_t *load_bmp(char *file);
 
-int bmp_rotate(bmp_info_t *pbmpinfo,bmp_rotate_e direction);
+int bmp_left_rotate(bmp_info_t *pbmpinfo,bmp_rotate_e direction);
 
 
 #endif
