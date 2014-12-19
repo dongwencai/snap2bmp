@@ -27,7 +27,31 @@ int line(surface_t *sur,coord_t point0,coord_t point1,uint32_t color)
 {
     if(point0.x != point1.x && point0.y != point1.y)
     {
-        
+       int ax = point0.x < point1.x ? 1 : -1;
+       int ay = point0.y < point1.y ? 1 : -1;
+       int k = ABS(point0.y - point1.y << 10) / ABS(point0.x - point1.x);
+       int i,rx,ry;
+       coord_t cr;
+       if(k < 1024)
+       {
+           for(i = point0.x;i != point1.x;i += ax)
+           {
+               ry = point0.y + ((k * (i - point0.x) + 512) >> 10);
+               cr.x = i;
+               cr.y = ry;
+               set_pixel(sur,cr,color);
+           }
+       }
+       else
+       {
+           for(i = point0.y;i != point1.y;i += ay)
+           {
+               rx = point0.x + (((i - point0.y) << 10) + 512) / k;
+               cr.x = rx;
+               cr.y = i;
+               set_pixel(sur,cr,color);
+           }
+       }
     }
     else if(point0.x == point1.x)
     {

@@ -45,6 +45,16 @@ int show_bmp( char *bmpfile,surface_t *sur)
     long int pos = 0;
     bmp_info_t *binfo = NULL;
     coord_t x = {100,100};
+    coord_t x0 = {100,200};
+    coord_t x1 = {100,400};
+    coord_t x2 = {400,200};
+    coord_t x3 = {100,200};
+    coord_t x4 = {0,0};
+    coord_t x5 = {200,300};
+    coord_t x6 = {0,0};
+    coord_t x7 = {200,50};
+    coord_t x8 = {0,0};
+    coord_t x9 = {200,200};
     binfo = load_bmp(bmpfile);
     //bmp_rotate(binfo,LEFT_ROTATE);
     if(binfo && 0)
@@ -73,5 +83,12 @@ int show_bmp( char *bmpfile,surface_t *sur)
     color = 0x1f << 11;
     line_horizontal(sur,x,200,color); 
     line_vertical(sur,x,200,color);
+    line(sur,x0,x1,color);
+    line(sur,x2,x3,color);
+    line(sur,x4,x5,color);
+    getchar();
+    line(sur,x6,x7,color);
+    getchar();
+    line(sur,x8,x9,color);
 }
 

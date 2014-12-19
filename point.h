@@ -10,14 +10,14 @@ typedef struct{
 
 static inline int set_pixel(surface_t *sur,coord_t point,uint32_t color)
 {
-    int pos = (sur->xoff + point.x) * sur->stride + (sur->yoff + point.y) * sur->Bpp;
+    int pos = (sur->yoff + point.y) * sur->stride + (sur->xoff + point.x) * sur->Bpp;
     memcpy(sur->buf + pos,&color,sur->Bpp);
     return 0;
 }
 
 static inline int get_pixel(surface_t *sur,coord_t point,uint32_t *color)
 {
-    int pos = (sur->xoff + point.x) * sur->stride + (sur->yoff + point.y) * sur->Bpp;
+    int pos = (sur->yoff + point.y) * sur->stride + (sur->xoff + point.x) * sur->Bpp;
     memcpy(color,sur->buf + pos,sur->Bpp);
     return 0;
 }
