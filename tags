@@ -4,10 +4,12 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+ABS	common.h	17;"	d
 BITMAPFILEHEADER	bmp.h	/^}__attribute__((packed)) BITMAPFILEHEADER; $/;"	t	typeref:struct:__anon3
 BITMAPFILEHEADER	mkbmp/bmp.h	/^}__attribute__((packed)) BITMAPFILEHEADER; $/;"	t	typeref:struct:__anon9
 BITMAPINFOHEADER	bmp.h	/^}__attribute__((packed)) BITMAPINFOHEADER;$/;"	t	typeref:struct:__anon4
 BITMAPINFOHEADER	mkbmp/bmp.h	/^}__attribute__((packed)) BITMAPINFOHEADER;$/;"	t	typeref:struct:__anon10
+Bpp	surface.h	/^    int Bpp;$/;"	m	struct:__anon2	access:public
 FILE_BROKEN	bmp.h	/^    FILE_BROKEN,$/;"	e	enum:__anon6
 FILE_BROKEN	mkbmp/bmp.h	/^    FILE_BROKEN,$/;"	e	enum:__anon12
 FILE_NOT_EXIST	bmp.h	/^    FILE_NOT_EXIST,$/;"	e	enum:__anon6
@@ -28,6 +30,7 @@ __BMP_H__	bmp.h	2;"	d
 __BMP_H__	mkbmp/bmp.h	2;"	d
 __COMMON_H__	common.h	2;"	d
 __LINE_H__	line.h	2;"	d
+__POINT_H__	point.h	2;"	d
 __SURFACE_H__	surface.h	2;"	d
 __anon10::biBitCount	mkbmp/bmp.h	/^    int16_t biBitCount; $/;"	m	struct:__anon10	access:public
 __anon10::biClrImportant	mkbmp/bmp.h	/^    int32_t biClrImportant; $/;"	m	struct:__anon10	access:public
@@ -45,10 +48,10 @@ __anon11::buf	mkbmp/bmp.h	/^    uint8_t buf[0];$/;"	m	struct:__anon11	access:pub
 __anon11::height	mkbmp/bmp.h	/^    int height;$/;"	m	struct:__anon11	access:public
 __anon11::stride	mkbmp/bmp.h	/^    uint16_t stride;$/;"	m	struct:__anon11	access:public
 __anon11::width	mkbmp/bmp.h	/^    int width;$/;"	m	struct:__anon11	access:public
-__anon1::x	line.h	/^    uint16_t x,y;$/;"	m	struct:__anon1	access:public
-__anon1::y	line.h	/^    uint16_t x,y;$/;"	m	struct:__anon1	access:public
-__anon2::bpp	surface.h	/^    int bpp;$/;"	m	struct:__anon2	access:public
-__anon2::buf	surface.h	/^    void *buf;$/;"	m	struct:__anon2	access:public
+__anon1::x	point.h	/^    uint16_t x,y;$/;"	m	struct:__anon1	access:public
+__anon1::y	point.h	/^    uint16_t x,y;$/;"	m	struct:__anon1	access:public
+__anon2::Bpp	surface.h	/^    int Bpp;$/;"	m	struct:__anon2	access:public
+__anon2::buf	surface.h	/^    char *buf;$/;"	m	struct:__anon2	access:public
 __anon2::color_key	surface.h	/^    uint32_t color_key;$/;"	m	struct:__anon2	access:public
 __anon2::fd	surface.h	/^    int fd;$/;"	m	struct:__anon2	access:public
 __anon2::height	surface.h	/^    int height;$/;"	m	struct:__anon2	access:public
@@ -129,17 +132,17 @@ bool	common.h	/^typedef char	bool;$/;"	t
 bpp	bmp.h	/^    short bpp;$/;"	m	struct:__anon5	access:public
 bpp	mkbmp/bmp.h	/^    short bpp;$/;"	m	struct:__anon11	access:public
 bpp	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	file:
-bpp	surface.h	/^    int bpp;$/;"	m	struct:__anon2	access:public
 buf	bmp.h	/^    uint8_t buf[0];$/;"	m	struct:__anon5	access:public
 buf	mkbmp/bmp.h	/^    uint8_t buf[0];$/;"	m	struct:__anon11	access:public
-buf	surface.h	/^    void *buf;$/;"	m	struct:__anon2	access:public
+buf	surface.h	/^    char *buf;$/;"	m	struct:__anon2	access:public
 color_key	surface.h	/^    uint32_t color_key;$/;"	m	struct:__anon2	access:public
 common_err_e	bmp.h	/^}common_err_e;$/;"	t	typeref:enum:__anon8
 common_err_e	mkbmp/bmp.h	/^}common_err_e;$/;"	t	typeref:enum:__anon14
-coord_t	line.h	/^}coord_t;$/;"	t	typeref:struct:__anon1
+coord_t	point.h	/^}coord_t;$/;"	t	typeref:struct:__anon1
 fd	surface.h	/^    int fd;$/;"	m	struct:__anon2	access:public
 flag_i	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
 flag_o	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
+get_pixel	point.h	/^inline int get_pixel(surface_t *sur,coord_t point,uint32_t *color)$/;"	f	signature:(surface_t *sur,coord_t point,uint32_t *color)
 height	bmp.h	/^    int height;$/;"	m	struct:__anon5	access:public
 height	mkbmp/bmp.h	/^    int height;$/;"	m	struct:__anon11	access:public
 height	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	file:
@@ -160,8 +163,9 @@ openfb	main.c	/^extern int openfb(char *devname,surface_t *sur);$/;"	p	file:	sig
 openfb	surface.c	/^int openfb(char *devname,surface_t *sur)$/;"	f	signature:(char *devname,surface_t *sur)
 openfb	surface.h	/^extern int openfb(char *devname,surface_t *sur);$/;"	p	signature:(char *devname,surface_t *sur)
 option_bpp	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
-show_bmp	main.c	/^int  show_bmp  ( char *bmpfile,surface_t sur );$/;"	p	file:	signature:( char *bmpfile,surface_t sur )
-show_bmp	main.c	/^int show_bmp( char *bmpfile,surface_t sur)$/;"	f	signature:( char *bmpfile,surface_t sur)
+set_pixel	point.h	/^inline int set_pixel(surface_t *sur,coord_t point,uint32_t color)$/;"	f	signature:(surface_t *sur,coord_t point,uint32_t color)
+show_bmp	main.c	/^int  show_bmp  ( char *bmpfile,surface_t *sur );$/;"	p	file:	signature:( char *bmpfile,surface_t *sur )
+show_bmp	main.c	/^int show_bmp( char *bmpfile,surface_t *sur)$/;"	f	signature:( char *bmpfile,surface_t *sur)
 stride	bmp.h	/^    uint16_t stride;$/;"	m	struct:__anon5	access:public
 stride	mkbmp/bmp.h	/^    uint16_t stride;$/;"	m	struct:__anon11	access:public
 stride	surface.h	/^    int stride;$/;"	m	struct:__anon2	access:public
@@ -172,9 +176,9 @@ width	bmp.h	/^    int width;$/;"	m	struct:__anon5	access:public
 width	mkbmp/bmp.h	/^    int width;$/;"	m	struct:__anon11	access:public
 width	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	file:
 width	surface.h	/^    int width;$/;"	m	struct:__anon2	access:public
-x	line.h	/^    uint16_t x,y;$/;"	m	struct:__anon1	access:public
+x	point.h	/^    uint16_t x,y;$/;"	m	struct:__anon1	access:public
 xoff	surface.h	/^    int xoff;$/;"	m	struct:__anon2	access:public
 xres	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
-y	line.h	/^    uint16_t x,y;$/;"	m	struct:__anon1	access:public
+y	point.h	/^    uint16_t x,y;$/;"	m	struct:__anon1	access:public
 yoff	surface.h	/^    int yoff;$/;"	m	struct:__anon2	access:public
 yres	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:

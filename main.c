@@ -16,7 +16,7 @@
 #define RGBA888TORGBA656(color) ((((color) >> 19) & 0x1f) << 11) \
                                                 |((((color) >> 10) & 0x3f) << 5) \
                                             |(((color) >> 3) & 0x1f) 
-int  show_bmp  ( char *bmpfile,surface_t sur );
+int  show_bmp  ( char *bmpfile,surface_t *sur );
 
 extern int openfb(char *devname,surface_t *sur);
 int main( int argc, char *argv[] )
@@ -29,24 +29,23 @@ int main( int argc, char *argv[] )
     openfb("/dev/fb0",&sur); 
     if (argc > 1)
     {
-        show_bmp( argv[1],sur);
+        show_bmp( argv[1],&sur);
     }
     return 0;
 }
 /******************************************************************************
  *
  ******************************************************************************/
-int show_bmp( char *bmpfile,surface_t sur)
+int show_bmp( char *bmpfile,surface_t *sur)
 {
     FILE *fp;
     char *tmp = NULL;
-    int rc;
     unsigned int color,a,r,g,b;
-    int line_x, line_y;
+    int  line_y;
     long int pos = 0;
     bmp_info_t *binfo = NULL;
-    binfo = load_bmp(bmpfile);
     coord_t x = {100,100};
+    binfo = load_bmp(bmpfile);
     //bmp_rotate(binfo,LEFT_ROTATE);
     if(binfo && 0)
     {
@@ -65,14 +64,14 @@ int show_bmp( char *bmpfile,surface_t sur)
                 //color = *(unsigned int *)&binfo->buf[i];
                 *(short *)&tmp[j] = (short)RGBA888TORGBA656(color);
             }
-            pos = line_y * sur.stride; 
-            memcpy(sur.buf + pos,tmp,binfo->stride / 2 );
-            memcpy(sur.buf + pos,&binfo->buf[line_y * binfo->stride],binfo->stride );
+            pos = line_y * sur->stride; 
+            //memcpy(sur->buf + pos,tmp,binfo->stride / 2 );
+            memcpy(sur->buf + pos,&binfo->buf[line_y * binfo->stride],binfo->stride );
         }
         free(tmp);
     }
     color = 0x1f << 11;
-    line_horizontal(&sur,x,200,color); 
-    line_vertical(&sur,x,200,color);
+    line_horizontal(sur,x,200,color); 
+    line_vertical(sur,x,200,color);
 }
 

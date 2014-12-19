@@ -25,9 +25,9 @@ int openfb(char *devname,surface_t *sur)
     sur->virtual_height = survar.yres_virtual;
     sur->xoff = survar.xoffset;
     sur->yoff = survar.yoffset;
-    sur->bpp = survar.bits_per_pixel;
-    sur->stride = sur->bpp * sur->width >> 3;
-    memcpy(&sur->color_key,&color,sur->bpp >> 3);
+    sur->Bpp = survar.bits_per_pixel >> 3;
+    sur->stride = sur->Bpp * sur->width;
+    memcpy(&sur->color_key,&color,sur->Bpp);
     screen_size = sur->height * sur->stride;
     sur->buf = mmap(0, screen_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     return fd;

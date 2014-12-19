@@ -4,8 +4,8 @@
 
 typedef struct {
     int fd;
-    void *buf;
-    int bpp;
+    char *buf;
+    int Bpp;
     int width;
     int height;
     int xoff;
