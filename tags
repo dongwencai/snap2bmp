@@ -22,15 +22,18 @@ MALLOC_FAIL	bmp.h	/^   MALLOC_FAIL, $/;"	e	enum:__anon8
 MALLOC_FAIL	mkbmp/bmp.h	/^   MALLOC_FAIL, $/;"	e	enum:__anon14
 MAX	common.h	13;"	d
 MIN	common.h	15;"	d
-RGBA888TORGBA656	main.c	16;"	d	file:
+PI	arc.c	7;"	d	file:
+RGBA888TORGBA656	main.c	18;"	d	file:
 RIGHT_ROTATE	bmp.h	/^    RIGHT_ROTATE,$/;"	e	enum:__anon7
 RIGHT_ROTATE	mkbmp/bmp.h	/^    RIGHT_ROTATE,$/;"	e	enum:__anon13
 SWAP	common.h	4;"	d
+__ARC_H__	arc.h	2;"	d
 __BMP_H__	bmp.h	2;"	d
 __BMP_H__	mkbmp/bmp.h	2;"	d
 __COMMON_H__	common.h	2;"	d
 __LINE_H__	line.h	2;"	d
 __POINT_H__	point.h	2;"	d
+__RECTANGLE_H__	rectangle.h	2;"	d
 __SURFACE_H__	surface.h	2;"	d
 __anon10::biBitCount	mkbmp/bmp.h	/^    int16_t biBitCount; $/;"	m	struct:__anon10	access:public
 __anon10::biClrImportant	mkbmp/bmp.h	/^    int32_t biClrImportant; $/;"	m	struct:__anon10	access:public
@@ -87,6 +90,8 @@ __anon9::bfReserved1	mkbmp/bmp.h	/^    uint16_t bfReserved1; $/;"	m	struct:__ano
 __anon9::bfReserved2	mkbmp/bmp.h	/^    uint16_t bfReserved2; $/;"	m	struct:__anon9	access:public
 __anon9::bfSize	mkbmp/bmp.h	/^    int32_t bfSize; $/;"	m	struct:__anon9	access:public
 __anon9::bfType	mkbmp/bmp.h	/^    uint16_t bfType;    $/;"	m	struct:__anon9	access:public
+arc	arc.c	/^int arc(surface_t *sur,double start_angle,double end_angle,coord_t o,int r,uint32_t bc,uint32_t fc)$/;"	f	signature:(surface_t *sur,double start_angle,double end_angle,coord_t o,int r,uint32_t bc,uint32_t fc)
+arc	arc.h	/^extern int arc(surface_t *sur,double start_angle,double end_angle,coord_t o,int r,uint32_t bc,uint32_t fc);$/;"	p	signature:(surface_t *sur,double start_angle,double end_angle,coord_t o,int r,uint32_t bc,uint32_t fc)
 bfOffBits	bmp.h	/^    int32_t bfOffBits; $/;"	m	struct:__anon3	access:public
 bfOffBits	mkbmp/bmp.h	/^    int32_t bfOffBits; $/;"	m	struct:__anon9	access:public
 bfReserved1	bmp.h	/^    uint16_t bfReserved1; $/;"	m	struct:__anon3	access:public
@@ -135,6 +140,8 @@ bpp	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	fil
 buf	bmp.h	/^    uint8_t buf[0];$/;"	m	struct:__anon5	access:public
 buf	mkbmp/bmp.h	/^    uint8_t buf[0];$/;"	m	struct:__anon11	access:public
 buf	surface.h	/^    char *buf;$/;"	m	struct:__anon2	access:public
+circle	arc.c	/^int circle(surface_t *sur,coord_t o,int r,uint32_t bc,uint32_t fc)$/;"	f	signature:(surface_t *sur,coord_t o,int r,uint32_t bc,uint32_t fc)
+circle	arc.h	/^extern int circle(surface_t *sur,coord_t o,int r,uint32_t bc,uint32_t fc);$/;"	p	signature:(surface_t *sur,coord_t o,int r,uint32_t bc,uint32_t fc)
 color_key	surface.h	/^    uint32_t color_key;$/;"	m	struct:__anon2	access:public
 common_err_e	bmp.h	/^}common_err_e;$/;"	t	typeref:enum:__anon8
 common_err_e	mkbmp/bmp.h	/^}common_err_e;$/;"	t	typeref:enum:__anon14
@@ -142,7 +149,7 @@ coord_t	point.h	/^}coord_t;$/;"	t	typeref:struct:__anon1
 fd	surface.h	/^    int fd;$/;"	m	struct:__anon2	access:public
 flag_i	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
 flag_o	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
-get_pixel	point.h	/^inline int get_pixel(surface_t *sur,coord_t point,uint32_t *color)$/;"	f	signature:(surface_t *sur,coord_t point,uint32_t *color)
+get_pixel	point.h	/^static inline int get_pixel(surface_t *sur,coord_t point,uint32_t *color)$/;"	f	signature:(surface_t *sur,coord_t point,uint32_t *color)
 height	bmp.h	/^    int height;$/;"	m	struct:__anon5	access:public
 height	mkbmp/bmp.h	/^    int height;$/;"	m	struct:__anon11	access:public
 height	mkbmp/mkbmp.c	/^static int32_t width = 1376,height = 768,bpp = 32;$/;"	v	file:
@@ -163,7 +170,9 @@ openfb	main.c	/^extern int openfb(char *devname,surface_t *sur);$/;"	p	file:	sig
 openfb	surface.c	/^int openfb(char *devname,surface_t *sur)$/;"	f	signature:(char *devname,surface_t *sur)
 openfb	surface.h	/^extern int openfb(char *devname,surface_t *sur);$/;"	p	signature:(char *devname,surface_t *sur)
 option_bpp	mkbmp/mkbmp.c	/^static char flag_o,flag_i,option_bpp,xres,yres;$/;"	v	file:
-set_pixel	point.h	/^inline int set_pixel(surface_t *sur,coord_t point,uint32_t color)$/;"	f	signature:(surface_t *sur,coord_t point,uint32_t color)
+rectangle	rectangle.c	/^int rectangle(surface_t *sur,coord_t p0,coord_t p1,uint32_t bc,uint32_t fc)$/;"	f	signature:(surface_t *sur,coord_t p0,coord_t p1,uint32_t bc,uint32_t fc)
+rectangle	rectangle.h	/^extern int rectangle(surface_t *sur,coord_t p0,coord_t p1,uint32_t bc,uint32_t fc);$/;"	p	signature:(surface_t *sur,coord_t p0,coord_t p1,uint32_t bc,uint32_t fc)
+set_pixel	point.h	/^static inline int set_pixel(surface_t *sur,coord_t point,uint32_t color)$/;"	f	signature:(surface_t *sur,coord_t point,uint32_t color)
 show_bmp	main.c	/^int  show_bmp  ( char *bmpfile,surface_t *sur );$/;"	p	file:	signature:( char *bmpfile,surface_t *sur )
 show_bmp	main.c	/^int show_bmp( char *bmpfile,surface_t *sur)$/;"	f	signature:( char *bmpfile,surface_t *sur)
 stride	bmp.h	/^    uint16_t stride;$/;"	m	struct:__anon5	access:public

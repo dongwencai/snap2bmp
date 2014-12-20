@@ -1,7 +1,7 @@
 syn keyword CTagsMember virtual_height biYPelsPerMeter biPlanes height bfSize xoff color_key yoff bfReserved2 biSizeImage y stride biClrUsed width biClrImportant bfReserved1 x Bpp biWidth virtual_width buf bfType biCompression biXPelsPerMeter biBitCount bfOffBits fd bpp biHeight biSize
 syn keyword CTagsGlobalVariable width option_bpp height bpp xres flag_i yres flag_o
 syn keyword CTagsEnumerationValue RIGHT_ROTATE FILE_NOT_EXIST MALLOC_FAIL FILE_BROKEN LEFT_ROTATE FORMAL_NOT_SUPPORT
-syn keyword CTagsFunction bmp_left_rotate main get_pixel line_horizontal load_bmp openfb line_vertical line bmp_rotate set_pixel show_bmp
+syn keyword CTagsFunction bmp_left_rotate main get_pixel line_horizontal load_bmp openfb arc line_vertical circle bmp_rotate set_pixel line rectangle show_bmp
 syn keyword CTagsType BITMAPINFOHEADER common_err_e coord_t i16 bmp_rotate_e BITMAPFILEHEADER surface_t bool bmp_err_e bmp_info_t
-syn keyword CTagsDefinedName __BMP_H__ MIN MAX __LINE_H__ RGBA888TORGBA656 ABS SWAP __POINT_H__ __COMMON_H__ __SURFACE_H__
+syn keyword CTagsDefinedName __BMP_H__ __SURFACE_H__ MIN MAX __ARC_H__ __LINE_H__ RGBA888TORGBA656 ABS SWAP PI __POINT_H__ __COMMON_H__ __RECTANGLE_H__
 

@@ -36,7 +36,7 @@ int line(surface_t *sur,coord_t point0,coord_t point1,uint32_t color)
        {
            for(i = point0.x;i != point1.x;i += ax)
            {
-               ry = point0.y + ((k * (i - point0.x) + 512) >> 10);
+               ry = point0.y + ((k * ABS(i - point0.x) + 512) >> 10) * ay;
                cr.x = i;
                cr.y = ry;
                set_pixel(sur,cr,color);
@@ -46,7 +46,7 @@ int line(surface_t *sur,coord_t point0,coord_t point1,uint32_t color)
        {
            for(i = point0.y;i != point1.y;i += ay)
            {
-               rx = point0.x + (((i - point0.y) << 10) + 512) / k;
+               rx = point0.x + (((ABS(i - point0.y) << 10) + 512) / k) * ax;
                cr.x = rx;
                cr.y = i;
                set_pixel(sur,cr,color);
