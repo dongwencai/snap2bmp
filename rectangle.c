@@ -2,10 +2,12 @@
 #include <stdint.h>
 #include "point.h"
 #include "line.h"
+#include "rectangle.h"
 
-int rectangle(surface_t *sur,coord_t p0,coord_t p1,uint32_t bc,uint32_t fc)
+int rectangle(surface_t *sur,rect_t rect,uint32_t bc,uint32_t fc)
 {
     int nx,ny;
+    coord_t p0 = rect.p0,p1 = rect.p1;
     coord_t point = p0;
     if(fc)
     {

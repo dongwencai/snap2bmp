@@ -3,5 +3,9 @@
 #include "surface.h"
 #include "point.h"
 
-extern int rectangle(surface_t *sur,coord_t p0,coord_t p1,uint32_t bc,uint32_t fc);
+typedef struct{
+    coord_t p0,p1;
+}rect_t;
+
+extern int rectangle(surface_t *sur,rect_t rect,uint32_t bc,uint32_t fc);
 #endif

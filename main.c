@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <linux/fb.h>
-#include <linux/kd.h>/*新添加的，用于进行图形模式时ioctl使用*/
+#include <linux/kd.h>
 #include <sys/mman.h>
 #include <sys/ioctl.h>
 #include <arpa/inet.h>
@@ -14,6 +14,9 @@
 #include "line.h"
 #include "arc.h"
 #include "rectangle.h"
+#include "border.h"
+#include "button.h"
+#include "text.h"
 
 #define RGBA888TORGBA656(color) (((((color) >> 19) & 0x1f) << 11) \
                                                 |((((color) >> 10) & 0x3f) << 5) \
@@ -59,6 +62,7 @@ int show_bmp( char *bmpfile,surface_t *sur)
     coord_t x9 = {200,200};
     coord_t x10 = {300,250};
     coord_t x11 ={200,400};
+    rect_t rect = {x,x2};
     binfo = load_bmp(bmpfile);
     //bmp_rotate(binfo,LEFT_ROTATE);
     if(binfo && 0)
@@ -85,10 +89,16 @@ int show_bmp( char *bmpfile,surface_t *sur)
         free(tmp);
     }
     color = 0x1f << 11;
+    /*
     color1 = RGBA888TORGBA656(b1);
     color2 = RGBA888TORGBA656(0xffffff);
     color3 = RGBA888TORGBA656(0x404040);
     color4 = RGBA888TORGBA656(0x808080);
+    */
+    color1 =(b1);
+    color2 =(0xffffff);
+    color3 =(0x404040);
+    color4 =(0x808080);
     /*
     line_horizontal(sur,x,200,color); 
     line_vertical(sur,x,200,color);
@@ -100,42 +110,14 @@ int show_bmp( char *bmpfile,surface_t *sur)
     */
     //arc(sur,30,120,x9,100,color,color);    
     //circle(sur,x9,100,color,color1);
-    line_horizontal(sur,x9,200,color1);
-    line_vertical(sur,x9,200,color1);
-    x9.x += 1;
-    x9.y += 1;
-    line_horizontal(sur,x9,198,color2);
-    line_vertical(sur,x9,198,color2);
-    x9.x += 1;
-    x9.y += 1;
-    line_horizontal(sur,x9,196,color1);
-    line_vertical(sur,x9,196,color1);
-    x9.x += 1;
-    x9.y += 1;
-    line_horizontal(sur,x9,194,color1);
-    line_vertical(sur,x9,194,color1);
-    x9.x += 1;
-    x9.y += 1;
-    line_horizontal(sur,x9,192,color4);
-    line_vertical(sur,x9,192,color4);
-    //rectangle(sur,x9,x10,0,color1);
-    line_horizontal(sur,x11,200,color3);
-    x11.x += 1;
-    x11.y -= 1;
-    line_horizontal(sur,x11,198,color4);
-    x11.x += 1;
-    x11.y -= 1;
-    line_horizontal(sur,x11,196,color1);
-    x11.y -= 1;
-    line_horizontal(sur,x11,196,color1);
-    x11.y -= 1;
-    line_horizontal(sur,x11,195,color1);
-    x11.y -= 1;
-    x11.x += 2;
-    line_horizontal(sur,x11,192,color2);
-    x11.x += 1;
-    x11.y -= 1;
-    line_horizontal(sur,x11,190,color1);
+    //window_border(sur,rect);
+    while(1)
+    {
+        ctrl_text(sur,rect,1); 
+        sleep(1);
+        //ctrl_button(sur,rect,0);
+        sleep(1);
+    }
     //line(sur,x10,x9,color);
 }
 
