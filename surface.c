@@ -25,7 +25,7 @@ int openfb(char *devname,surface_t *sur)
     sur->virtual_height = survar.yres_virtual;
     sur->xoff = survar.xoffset;
     sur->yoff = survar.yoffset;
-    sur->width += 10;
+//    sur->width += 10;
     sur->virtual_width += 10;
     sur->Bpp = survar.bits_per_pixel >> 3;
     sur->stride = sur->Bpp * sur->width;

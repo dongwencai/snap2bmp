@@ -108,14 +108,16 @@ int show_bmp( char *bmpfile,surface_t *sur)
     line(sur,x6,x7,color);
     line(sur,x8,x9,color);
     */
-    //arc(sur,30,120,x9,100,color,color);    
-    //circle(sur,x9,100,color,color1);
+    arc(sur,120,30,x9,100,color,color);    
+    //arc(sur,180,290,x9,100,color,color);    
+    //circle(sur,x9,100,color,0);
     //window_border(sur,rect);
-    while(1)
+    while(0)
     {
-        ctrl_text(sur,rect,1); 
+        //ctrl_text(sur,rect,1); 
+        ctrl_button(sur,rect,1);
         sleep(1);
-        //ctrl_button(sur,rect,0);
+        ctrl_button(sur,rect,0);
         sleep(1);
     }
     //line(sur,x10,x9,color);

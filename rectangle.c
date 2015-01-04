@@ -30,3 +30,4 @@ int rectangle(surface_t *sur,rect_t rect,uint32_t bc,uint32_t fc)
 
     }
 }
+
