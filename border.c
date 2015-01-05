@@ -6,6 +6,7 @@
 #define RGBA888TORGBA656(color) (((((color) >> 19) & 0x1f) << 11) \
                                                 |((((color) >> 10) & 0x3f) << 5) \
                                             |(((color) >> 3) & 0x1f))
+/*
 int window_border(surface_t *sur,rect_t rect)
 {
     uint16_t nx,ny;
@@ -107,4 +108,4 @@ int text_border(surface_t *sur,rect_t rect,int text_status)
     point.y += 1;
     color = color1;
     line_vertical(sur,point,ny - 2,color);
-}
+}*/

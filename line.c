@@ -3,66 +3,62 @@
 #include "surface.h"
 #include "common.h"
 #include "string.h"
-int line_horizontal(surface_t *sur,coord_t point,uint16_t len,uint32_t color)
+int line_horizontal(surface_t *sur,int x0,int y0,uint16_t len,uint32_t color)
 {
-    int i,real_len = MIN(len,sur->virtual_width - point.x);
-    coord_t cr = point;
+    int i,real_len = MIN(len,sur->virtual_width - x0);
     for(i = 0;i < real_len;i ++)
     {
-        cr.x = point.x + i;
-        set_pixel(sur,cr,color);
+        set_pixel(sur,x0 + i,y0,color);
     }
 }
-int line_vertical(surface_t *sur,coord_t point,uint16_t len ,uint32_t color)
+int line_vertical(surface_t *sur,int x0,int y0,uint16_t len ,uint32_t color)
 {
-    int i,real_len = MIN(len,sur->virtual_height - point.y);
-    coord_t cr = point;
+    int i,real_len = MIN(len,sur->virtual_height - y0);
     for(i = 0;i < real_len;i ++)
     {
-        cr.y = point.y + i;
-        set_pixel(sur,cr,color);
+        set_pixel(sur,x0,y0 + i,color);
     }
 }
-int line(surface_t *sur,coord_t point0,coord_t point1,uint32_t color)
+int line(surface_t *sur,int x0,int y0,int x1,int y1,uint32_t color)
 {
-    if(point0.x != point1.x && point0.y != point1.y)
+    if(x0 != x1 && y0 != y1)
     {
-       int ax = point0.x < point1.x ? 1 : -1;
-       int ay = point0.y < point1.y ? 1 : -1;
-       int k = ABS(point0.y - point1.y << 10) / ABS(point0.x - point1.x);
+       int ax = x0 < x1 ? 1 : -1;
+       int ay = y0 < y1 ? 1 : -1;
+       int k = ABS(y0 - y1 << 10) / ABS(x0 - x1);
        int i,rx,ry;
        coord_t cr;
        if(k < 1024)
        {
-           for(i = point0.x;i != point1.x;i += ax)
+           for(i = x0;i != x1 + ax;i += ax)
            {
-               ry = point0.y + ((k * ABS(i - point0.x) + 512) >> 10) * ay;
-               cr.x = i;
-               cr.y = ry;
-               set_pixel(sur,cr,color);
+               ry = y0 + ((k * ABS(i - x0) + 512) >> 10) * ay;
+               set_pixel(sur,i,ry,color);
            }
        }
        else
        {
-           for(i = point0.y;i != point1.y;i += ay)
+           for(i = y0;i != y1 + ay;i += ay)
            {
-               rx = point0.x + (((ABS(i - point0.y) << 10) + 512) / k) * ax;
-               cr.x = rx;
-               cr.y = i;
-               set_pixel(sur,cr,color);
+               rx = x0 + (((ABS(i - y0) << 10) + 512) / k) * ax;
+               set_pixel(sur,rx,i,color);
            }
        }
     }
-    else if(point0.x == point1.x)
+    else if(x0 == x1)
     {
-       int real_len = ABS(point0.y - point1.y) + 1; 
-       coord_t point = point0.y < point1.y ? point0 : point1;
-       line_vertical(sur,point,real_len,color);
+       int real_len = ABS(y0 - y1) + 1; 
+       if(y0 < y1)
+           line_vertical(sur,x0,y0,real_len,color);
+       else
+           line_vertical(sur,x1,y1,real_len,color);
     }
     else
     {
-       int real_len = ABS(point0.x - point1.x) + 1; 
-       coord_t point = point0.x < point1.x ? point0 : point1;
-       line_horizontal(sur,point,real_len,color);
+       int real_len = ABS(x0 - x1) + 1; 
+       if(x0 < x1)
+           line_horizontal(sur,x0,y0,real_len,color);
+       else
+           line_horizontal(sur,x1,y1,real_len,color);
     }
 }

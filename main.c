@@ -108,9 +108,9 @@ int show_bmp( char *bmpfile,surface_t *sur)
     line(sur,x6,x7,color);
     line(sur,x8,x9,color);
     */
-    arc(sur,120,30,x9,100,color,color);    
-    //arc(sur,180,290,x9,100,color,color);    
-    //circle(sur,x9,100,color,0);
+    arc(sur,30,120,x9.x,x9.y,100,color,color2);    
+    arc(sur,180,290,x9.x,x9.y,100,color,color1);    
+    //circle(sur,x9.x,x9.y,100,color,color1);
     //window_border(sur,rect);
     while(0)
     {
